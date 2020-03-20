@@ -179,7 +179,7 @@ abstract class UserManager {
 			throw new DatabaseError($e->getMessage());
 		}
 
-		$newUserId = (int) $this->db->getLastInsertId();
+		$newUserId = (int) $this->db->getLastInsertId('users_id_seq');
 
 		if ($verified === 0) {
 			$this->createConfirmationRequest($newUserId, $email, $callback);
